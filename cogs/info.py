@@ -1,27 +1,3 @@
-'''
-MIT License
-
-Copyright (c) 2017 verixx
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-'''
-
 import discord
 from discord.ext import commands
 import datetime
@@ -183,20 +159,14 @@ class Info():
         else:
             time_ = '%s hours, %s minutes, and %s seconds' % (hours, minutes, seconds)
         servers = len(self.bot.servers)
-        version = '1.2.1'
         library = 'discord.py'
-        creator = 'verix#7220'
-        discord_ = '[Support Server](https://discord.gg/pmQSbAd)'
-        github = '[/verixx/selfbot](https://github.com/verixx/selfbot)'
+        creator = 'B a ™ a n#4385'
         time = ctx.message.timestamp
         emb = discord.Embed(colour=0x00FFFF)
-        emb.set_author(name='selfbot.py', icon_url=self.bot.user.avatar_url)
-        emb.add_field(name='Version',value=version)
+        emb.set_author(name='B a ™ a n', icon_url=self.bot.user.avatar_url)
         emb.add_field(name='Library',value=library)
         emb.add_field(name='Creator',value=creator)
         emb.add_field(name='Servers',value=servers)
-        emb.add_field(name='Github',value=github)
-        emb.add_field(name='Discord',value=discord_)
         emb.add_field(name='Uptime',value=time_)
         emb.set_footer(text="ID: {}".format(self.bot.user.id))
         emb.set_thumbnail(url='https://cdn.discordapp.com/avatars/319395783847837696/349677f658e864c0a5247a658df61eb1.webp?width=80&height=80')
