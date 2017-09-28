@@ -202,8 +202,8 @@ class Moderation:
         perms.send_messages = None
         if not perms.is_empty():
                 await self.bot.edit_channel_permissions(ctx.message.channel, user, perms)
-	else:
-	        await self.bot.delete_channel_permissions(ctx.message.channel, user)
+        else:
+                await self.bot.delete_channel_permissions(ctx.message.channel, user)
 	        await self.answer_done(ctx.message)
 
     @commands.command(pass_context = True)
@@ -215,8 +215,8 @@ class Moderation:
         if not perms.is_empty():
 	        await self.bot.edit_channel_permissions(ctx.message.channel, user, perms)
         else:
-	        await self.bot.delete_channel_permissions(ctx.message.channel, user)
-	        await self.answer_done(ctx.message)
+                await self.bot.delete_channel_permissions(ctx.message.channel, user)
+		await self.answer_done(ctx.message)
 
     @commands.command(pass_context = True)
     @commands.has_permissions(manage_channels=True)
