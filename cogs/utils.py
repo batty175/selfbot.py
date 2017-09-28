@@ -485,7 +485,7 @@ class Utility:
         """Return all channels"""
         text = []
         voice = []
-        self.bot.delete_message(ctx.message)
+        await self.bot.delete_message(ctx.message)
         for channel in sorted(ctx.message.server.channels, key=lambda c: c.position):
             if channel.type == discord.ChannelType.voice:
                 voice.append(channel.name)
