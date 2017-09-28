@@ -177,7 +177,7 @@ class Moderation:
         
 
     @commands.command(pass_context = True)
-    @coammands.has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_channels=True)
     async unmuteall(self, ctx):
         '''Allows the @everyone role to send messages'''
         everyone_perms = ctx.message.channel.overwrites_for(ctx.message.server.default_role)
@@ -186,7 +186,7 @@ class Moderation:
         await self.answer_done(ctx.message)
 
     @commands.command(pass_context = True)
-    @comands.has_permissions(manage_channels=True)
+    @commands.has_permissions(manage_channels=True)
     async mute(self, ctx, user: discord.Member):
         '''Denies someone from sending messages'''
         perms = ctx.message.channel.overwrites_for(user)
