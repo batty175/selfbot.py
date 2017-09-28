@@ -1,27 +1,3 @@
-'''
-MIT License
-
-Copyright (c) 2017 verixx
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-'''
-
 import discord
 from discord.ext import commands
 from ext.utility import parse_equation
@@ -276,7 +252,7 @@ class Misc:
         e.add_field(name='\N{DOWN-POINTING RED TRIANGLE} Rest', value=f'```{ctx.prefix}calc - 2 5```', inline=True)
         e.add_field(name='\N{DOWN-POINTING RED TRIANGLE} Divide', value=f'```{ctx.prefix}calc / 2 5```', inline=True)
         e.add_field(name='\N{DOWN-POINTING RED TRIANGLE} Multiply', value=f'```{ctx.prefix}calc x 2 5```', inline=True)
-        await ctx.channel.send(embed=e, delete_after=25)
+        await ctx.channel.send(embed=e)
 
     @calc.command(name='+')
     async def _plus(self, ctx, *numbers: float):
@@ -410,29 +386,24 @@ class Misc:
             emb.title = "Search term not found."
         await ctx.send(embed=emb)
 
-    @commands.group(invoke_without_command=True)
-    async def lenny(self, ctx):
-        """Lenny and tableflip group commands"""
-        msg = 'Available: `{}lenny face`, `{}lenny shrug`, `{}lenny tableflip`, `{}lenny unflip`'
-        await ctx.send(msg.format(ctx.prefix))
-
-    @lenny.command()
+    
+    @commands.command()
     async def shrug(self, ctx):
         """Shrugs!"""
         await ctx.message.edit(content='¯\\\_(ツ)\_/¯')
 
-    @lenny.command()
+    @commands.command()
     async def tableflip(self, ctx):
         """Tableflip!"""
         await ctx.message.edit(content='(╯°□°）╯︵ ┻━┻')
 
-    @lenny.command()
+    @commands.command()
     async def unflip(self, ctx):
         """Unfips!"""
         await ctx.message.edit(content='┬─┬﻿ ノ( ゜-゜ノ)')
 
-    @lenny.command()
-    async def face(self, ctx):
+    @commands.command()
+    async def lenny(self, ctx):
         """Lenny Face!"""
         await ctx.message.edit(content='( ͡° ͜ʖ ͡°)')
 
