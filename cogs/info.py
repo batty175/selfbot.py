@@ -178,8 +178,8 @@ class Info():
         author = ctx.message.author
         await self.bot.delete_message(ctx.message)
         pages = self.bot.formatter.format_help_for(ctx, self.bot)
-        for page in pages:
             try:
+                for page in pages:
                 await self.bot.say(embed=page)
             except:
                 await self.bot.say('I need the embed links perm.')
