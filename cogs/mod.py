@@ -204,7 +204,7 @@ class Moderation:
                 await self.bot.edit_channel_permissions(ctx.message.channel, user, perms)
         else:
                 await self.bot.delete_channel_permissions(ctx.message.channel, user)
-	        await self.answer_done(ctx.message)
+                await self.answer_done(ctx.message)
 
     @commands.command(pass_context = True)
     @commands.has_permissions(manage_channels=True)
@@ -213,10 +213,10 @@ class Moderation:
         perms = ctx.message.channel.overwrites_for(user)
         perms.read_messages = None
         if not perms.is_empty():
-	        await self.bot.edit_channel_permissions(ctx.message.channel, user, perms)
+                await self.bot.edit_channel_permissions(ctx.message.channel, user, perms)
         else:
                 await self.bot.delete_channel_permissions(ctx.message.channel, user)
-		await self.answer_done(ctx.message)
+                await self.answer_done(ctx.message)
 
     @commands.command(pass_context = True)
     @commands.has_permissions(manage_channels=True)
