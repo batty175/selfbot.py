@@ -387,26 +387,6 @@ class Misc:
         await ctx.send(embed=emb)
 
     
-    @commands.command()
-    async def shrug(self, ctx):
-        """Shrugs!"""
-        await ctx.message.edit('¯\\\_(ツ)\_/¯')
-
-    @commands.command()
-    async def tableflip(self, ctx):
-        """Tableflip!"""
-        await ctx.message.edit('(╯°□°）╯︵ ┻━┻')
-
-    @commands.command()
-    async def unflip(self, ctx):
-        """Unfips!"""
-        await ctx.message.edit('┬─┬﻿ ノ( ゜-゜ノ)')
-
-    @commands.command()
-    async def lenny(self, ctx):
-        """Lenny Face!"""
-        await ctx.message.edit('( ͡° ͜ʖ ͡°)')
-
     @commands.command(aliases=['8ball'])
     async def eightball(self, ctx, *, question=None):
         """Ask questions to the 8ball"""
