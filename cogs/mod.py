@@ -1,27 +1,3 @@
-'''
-MIT License
-
-Copyright (c) 2017 verixx
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-'''
-
 import discord
 from discord.ext import commands
 import datetime
@@ -189,6 +165,69 @@ class Moderation:
         await self.bot.say('**{}** has been warned'.format(user))
         await self.bot.send_message(user, warning.format(server, author, reason))
         await self.bot.delete_message(ctx.message)
+        
+    @commands.command(pass_context = True)
+    @commands.has_permissions(manage_channels=True)
+    async def muteall(self, ctx):
+        '''Denies the @everyone role to send messages'''
+        everyone_perms = ctx.message.channel.overwrites_for(ctx.message.server.default_role)
+        everyone_perms.send_messages = False
+        await self.bot.edit_channel_permissions(ctx.message.channel, ctx.message.server.default_role, everyone_perms)
+        await self.answer_done(ctx.message)
+        
+
+    @commands.command(pass_context = True)
+    @coammands.has_permissions(manage_channels=True)
+    async unmuteall(self, ctx):
+        '''Allows the @everyone role to send messages'''
+        everyone_perms = ctx.message.channel.overwrites_for(ctx.message.server.default_role)
+        everyone_perms.send_messages = True
+        await self.bot.edit_channel_permissions(ctx.message.channel, ctx.message.server.default_role, everyone_perms)
+        await self.answer_done(ctx.message)
+
+    @commands.command(pass_context = True)
+    @comands.has_permissions(manage_channels=True)
+    async mute(self, ctx, user: discord.Member):
+        '''Denies someone from sending messages'''
+        perms = ctx.message.channel.overwrites_for(user)
+		perms.send_messages = False
+		await self.bot.edit_channel_permissions(ctx.message.channel, user, perms)
+		await self.answer_done(ctx.message)
+
+    @commands.command(pass_context = True)
+    @commands.has_permissions(manage_channels=True)
+    async unmute(self, ctx, user: discord.Member):
+        '''Allows someone to send messages'''
+        perms = ctx.message.channel.overwrites_for(user)
+		perms.send_messages = None
+		if not perms.is_empty():
+			await self.bot.edit_channel_permissions(ctx.message.channel, user, perms)
+		else:
+			await self.bot.delete_channel_permissions(ctx.message.channel, user)
+		await self.answer_done(ctx.message)
+
+    @commands.command(pass_context = True)
+    @commands.has_permissions(manage_channels=True)
+    async unblock(self, ctx, user: discord.Member):
+        '''Allows someone to view a channel'''
+        perms = ctx.message.channel.overwrites_for(user)
+		perms.read_messages = None
+		if not perms.is_empty():
+			await self.bot.edit_channel_permissions(ctx.message.channel, user, perms)
+		else:
+			await self.bot.delete_channel_permissions(ctx.message.channel, user)
+		await self.answer_done(ctx.message)
+
+    @commands.command(pass_context = True)
+    @commands.has_permissions(manage_channels=True)
+    async block(self, ctx, user: discord.Member):
+        """Denies someone from viewing the channel"""
+		perms = ctx.message.channel.overwrites_for(user)
+		perms.read_messages = False
+		await self.bot.edit_channel_permissions(ctx.message.channel, user, perms)
+		await self.answer_done(ctx.message)
+
+        
 
 
 def setup(bot):
