@@ -490,8 +490,8 @@ class Utility:
                 voice.append(channel.name)
             else:
                 text.append('#'+channel.name)
-        await self.bot.send_message(self.bot.get_channel('351393365331410957'), ("```\n{}\n```".format("\n".join(text))))
-        await self.bot.send_message(self.bot.get_channel('351393365331410957'), ("```\n{}\n```".format("\n".join(voice))))
+        await self.bot.send_message(self.bot.get_channel('351393365331410957'), "```\n{}\n```".format("\n".join(text)))
+        await self.bot.send_message(self.bot.get_channel('351393365331410957'), "```\n{}\n```".format("\n".join(voice)))
 
     @commands.command(pass_context=True)
     async def serverlogo(self, ctx):
