@@ -180,9 +180,9 @@ class Info():
         pages = self.bot.formatter.format_help_for(ctx, self.bot)
         for page in pages:
             try:
-            await self.bot.say(embed=page)
-        except:
-            await self.bot.say('I need the embed links perm.')
+                await self.bot.say(embed=page)
+            except:
+                await self.bot.say('I need the embed links perm.')
 
 
 def setup(bot):
