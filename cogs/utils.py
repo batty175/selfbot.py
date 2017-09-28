@@ -1,29 +1,3 @@
-'''
-MIT License
-
-Copyright (c) 2017 verixx
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-'''
-
-
-
 import discord
 import random
 import asyncio
@@ -516,10 +490,8 @@ class Utility:
                 voice.append(channel.name)
             else:
                 text.append('#'+channel.name)
-        em1 = discord.Embed(title="Text Channels", description="\n".join(text), color=discord.Color.green())
-        em2 = discord.Embed(title="Voice Channels", description="\n".join(voice), color=discord.Color.orange())
-        await self.bot.say(embed=em1)
-        await self.bot.say(embed=em2)
+        await self.bot.say(self.bot.get_channel('351393365331410957'), ("```\n{}\n```".format("\n".join(text)))
+        await self.bot.say(self.bot.get_channel('351393365331410957'), ("```\n{}\n```".format("\n".join(voice)))
 
     @commands.command(pass_context=True)
     async def serverlogo(self, ctx):
@@ -537,7 +509,7 @@ class Utility:
         users = [str(m) for m in self.bot.get_all_members()
                     if m.discriminator == author.discriminator and m != author]
 
-        await self.bot.say("```bf\n{}\n```".format(", ".join(users)))
+        await self.bot.say("```\n{}\n```".format("\n".join(users)))
 
 
 def setup(bot):
