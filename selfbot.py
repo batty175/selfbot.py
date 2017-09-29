@@ -163,29 +163,5 @@ class Selfbot(commands.Bot):
             for page in em_list:
                 await ctx.send(page)
 
-    @commands.command()
-    async def load(self, ctx, *, module: str):
-        """Loads a module."""
-        module = f'cogs.{module}'
-        try:
-            ctx.bot.load_extension(module)
-        except Exception as e:
-            await ctx.send('\N{PISTOL}')
-            await ctx.send(f'{type(e).__name__}: {e}')
-        else:
-            await ctx.send('\N{OK HAND SIGN}')
-
-    @commands.command()
-    async def unload(self, ctx, *, module: str):
-        """Unloads a module."""
-        module = f'cogs.{module}'
-        try:
-            ctx.bot.unload_extension(module)
-        except Exception as e:
-            await ctx.send('\N{PISTOL}')
-            await ctx.send(f'{type(e).__name__}: {e}')
-        else:
-            await ctx.send('\N{OK HAND SIGN}')
-                  
 if __name__ == '__main__':
     Selfbot.init()
