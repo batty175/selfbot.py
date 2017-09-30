@@ -119,7 +119,7 @@ class Information:
             except discord.HTTPException:
                 await ctx.send(icon)
 
-    @commands.command(aliases=['svi','si'])
+    @commands.command(aliases=['server','si'])
     @commands.guild_only()
     async def serverinfo(self, ctx, server_id : int=None):
         '''See information about the server.'''
