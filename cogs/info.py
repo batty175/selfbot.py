@@ -38,6 +38,7 @@ class Info():
         data.add_field(name="Users", value="{}/{}".format(online, total_users))
         data.add_field(name="Text Channels", value=text_channels)
         data.add_field(name="Voice Channels", value=voice_channels)
+        data.add_field(name="Categories", value=categories)
         data.add_field(name="Roles", value=len(server.roles))
         data.add_field(name="Owner", value=str(server.owner))
         data.set_footer(text="Server ID: " + server.id)
